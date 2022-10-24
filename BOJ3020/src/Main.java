@@ -24,9 +24,15 @@ class Main {
                 }
             }
         }
-        for(int i = 0; i<H; i++){
-            System.out.println(Arrays.toString(map[i]));
+        int minPath = 0;
+        long min = Integer.MAX_VALUE;
+        for (int i = 0; i < H; i++) {
+            long count = Arrays.stream(map[i]).filter(s -> s == 1).count();
+            if(count<min){
+                min = count;
+                minPath = 1;
+            } else if (count == min) minPath++;
         }
-
+        System.out.println(min + " " + minPath);
     }
 }
